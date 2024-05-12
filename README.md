@@ -1,2 +1,2 @@
 # Django_First
-Django ToDo
+ToDo
