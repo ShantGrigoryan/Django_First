@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="t">
+        <h3>To Do List</h3>
+    </header>
+    <hr>
+
+    <div class="todo_form">
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                <input type="text" name="info" placeholder="Enter Your ToDo" id="">
+            </p>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="todo_form">
+        {% for i in todolist %}
+        <form method="post">
+            {% csrf_token %}
+                <p>{{ i.name }} <button type="submit" name="todo_id" value="{{ i.id }}">Delete</button></p>
+            </form>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
